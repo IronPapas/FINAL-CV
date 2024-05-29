@@ -28,8 +28,22 @@ public class GameLogic {
      * @return an integer representing the next guess to make (-1 if the user's response is invalid)
      */
     public int binarySearch(String predictedClass) {
-        
-        return 0;
+        if(predictedClass.equals("stop")){
+            return guess;
+        }
+        else if(predictedClass.equals("higher")){
+            left = guess;
+            guess = (left + right) / 2;
+            return guess;
+        }
+        else if(predictedClass.equals("lower")){
+            right = guess;
+            guess = (left + right) / 2;
+            return guess;
+        }
+        else{
+            return -1;
+        }
     }
 
     /**
@@ -39,8 +53,11 @@ public class GameLogic {
      * @return true if the user's guess is "stop", false otherwise
      */
     public boolean isGuessCorrect(String predictedClass) {
-        
-        return false;
+        boolean flag = false;
+        if(predictedClass.equals("stop")){
+            flag = true;
+        }
+        return flag;
     }
 
     /**
@@ -51,8 +68,9 @@ public class GameLogic {
      * @return the next guess
      */
     public int guessHigher() {
-        
-        return 0;
+        left = guess;
+        guess = (left + right) / 2;
+        return guess;
     }
 
     /**
@@ -62,8 +80,9 @@ public class GameLogic {
      * @return the new guess
      */
     public int guessLower() {
-        
-        return 0;
+        right = guess;
+        guess = (left + right) / 2;
+        return guess;
     }
 
     /**
@@ -72,8 +91,7 @@ public class GameLogic {
      * @return the correct guess
      */
     public int guessCorrect() {
-
-        return 0;
+        return guess;
     }
 
     /**
